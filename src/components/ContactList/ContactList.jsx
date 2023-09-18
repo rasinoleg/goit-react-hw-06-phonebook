@@ -1,22 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux'; 
+import { onRemoveContact } from 'redux/contactSlice'; 
 
-const ContactList = ({ contacts, onRemoveContact }) => (
-  <ul>
-    {contacts.map(contact => ( 
-      <li key={contact.id}>
-        {contact.name}: {contact.number}
-        <button onClick={() => onRemoveContact(contact.id)}>Delete</button>
-      </li>
-    ))}
-  </ul>
-);
+const ContactList = () => {  
+  const dispatch = useDispatch(); 
 
-ContactList.propTypes = {
-  contacts: PropTypes.array.isRequired,
-  onRemoveContact: PropTypes.func.isRequired,
+  const contacts = useSelector(state => state.contacts.contacts);
+  const handleRemoveContact = useCallback(
+    (contactId) => {
+      dispatch(onRemoveContact(contactId)); 
+    },
+    [dispatch]
+  );
+  return (
+    <ul>
+      {contacts.map(contact => ( 
+        <li key={contact.id}>
+          {contact.name}: {contact.number}
+          <button onClick={() => handleRemoveContact(contact.id)}>Delete</button>
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 export default ContactList;
+
+
 
 

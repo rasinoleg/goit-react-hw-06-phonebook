@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styles from './ContactForm.module.css';
 
 
@@ -54,8 +53,4 @@ export const ContactForm = ({onAddContact}) => {
     </form>
   );
   };
-
-ContactForm.propTypes = {
-  onAddContact: PropTypes.func.isRequired,
-};
 export default ContactForm;
