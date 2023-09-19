@@ -15,7 +15,6 @@ const Filter = () => {
     <div>
       Find contacts by name
     <input
-    name="filter"
       type="text"
       onChange={handleFilterChange}
     />
