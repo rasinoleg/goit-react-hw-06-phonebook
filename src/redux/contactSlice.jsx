@@ -16,10 +16,12 @@ export const contactSlice = createSlice({
       state.contacts.push(action.payload);
     },
     onRemoveContact: (state, action) => {
+     
       state.contacts = state.contacts.filter(
         contact => contact.id !== action.payload
       );
     },
+    
     onFilterContacts: (state, action) => {
       state.filter = action.payload;
     },
