@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { onAddContact } from 'redux/contactSlice';
+import { v4 as uuidv4 } from 'uuid';
 
 import styles from './ContactForm.module.css';
 
@@ -27,8 +28,9 @@ const ContactForm = () => {
       alert('Fields must be filled!');
       return;
     }
-
-    dispatch(onAddContact({ name, number }));
+    const id = uuidv4(); 
+  dispatch(onAddContact({ id, name, number })); 
+  
 
     setName('');
     setNumber('');

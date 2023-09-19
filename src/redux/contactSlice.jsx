@@ -15,14 +15,14 @@ const contactSlice = createSlice({
       state.contacts.push(action.payload);
     },
     onRemoveContact: (state, action) => {
-      const indexToRemove = state.contacts.findIndex(
-        contact => contact.id === action.payload
-      );
-    
-      if (indexToRemove !== -1) {
-        state.contacts.splice(indexToRemove, 1);
-      }
-    },
+  const indexToRemove = state.contacts.findIndex(
+    contact => contact.id === action.payload
+  );
+
+  if (indexToRemove !== -1) {
+    state.contacts.splice(indexToRemove, 1);
+  }
+},
     onFilterContacts: (state, action) => {
       state.filter = action.payload;
     },
